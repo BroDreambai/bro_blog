@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bro.blog.dao.LinkMapper">
+    <resultMap type="Link" id="LinkResult">
+        <result property="linkName" column="linkName"/>
+        <result property="linkUrl" column="linkUrl"/>
+    </resultMap>
+
+    <select id="allLinkList" resultMap="LinkResult">
+        select * from link
+    </select>
+</mapper>

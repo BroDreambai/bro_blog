@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_HOME" value="classpath:/logs"/>
+
+    <appender name="requestAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/request.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/request.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <MaxHistory>60</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][%highlight(%5p)][%t][%logger{0}:%L] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="requestLogFilter" level="INFO" additivity="false">
+        <appender-ref ref="requestAppender"/>
+    </logger>
+
+    <appender name="dreambaiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/dreambai.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/dreambai.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][%highlight(%5p)][%t][%logger{0}:%L] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.dreambai.blog" level="INFO" additivity="false">
+        <appender-ref ref="dreambaiAppender"/>
+    </logger>
+
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}|%t|%p| %m |%logger:%L%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Spring -->
+
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

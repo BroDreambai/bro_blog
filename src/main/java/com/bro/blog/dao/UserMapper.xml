@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bro.blog.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.bro.blog.base.bean.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="password" property="password"/>
+        <result column="enabled" property="enabled"/>
+        <result column="email" property="email"/>
+        <result column="rid" property="rid"/>
+        <result column="userface" property="userface"/>
+        <result column="create_time" property="create_time"/>
+        <result column="update_time" property="update_time"/>
+
+    </resultMap>
+
+
+    <select id="loadUserByUsername" resultType="com.bro.blog.base.bean.User">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
+
+    <select id="checkUsernameExist" resultType="java.lang.Integer">
+        SELECT count(*) FROM user WHERE username=#{username}
+    </select>
+
+    <select id="checkEmailExist" resultType="java.lang.Integer">
+        SELECT count(*) FROM user WHERE email=#{email}
+    </select>
+
+    <insert id="reg" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user set username=#{username},password=#{password},email=#{email}
+    </insert>
+
+    <update id="updateUserEmail">
+        UPDATE user set nickname=#{nickname} WHERE id=#{id}
+    </update>
+
+    <update id="updateUserEnabled">
+        UPDATE user set enabled=#{enabled} WHERE id=#{uid}
+    </update>
+    <delete id="deleteUserById">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bro.blog.dao.BlogMapper">
+
+
+    <select id="selectBlogs" resultType="com.bro.blog.base.bean.Blog">
+        SELECT a.id,a.`title`,a.`publishDate`,a.`pageView`,u.`nickname`,c.`cateName` FROM article a,user
+        u,category c WHERE a.`cid`=c.`id` AND a.`uid`=u.`id` AND a.isDelete = 0
+        <if test="cateName!=null and cateName !=''">
+            AND c.cateName = #{cateName}
+        </if>
+        <if test="keywords!=null and keywords !=''">
+            AND a.title LIKE concat('%',#{keywords},'%')
+        </if>
+        ORDER BY a.publishDate DESC limit #{offset},#{limit};
+    </select>
+
+    <select id="getTotal" resultType="int">
+        SELECT count(*) FROM article
+        <where>
+            <if test="keywords!=null and keywords !=''">
+                title LIKE concat('%',#{keywords},'%');
+            </if>
+        </where>
+    </select>
+
+    <select id="getBlogById" parameterType="Long" resultMap="BaseResultMap">
+        SELECT a.id,a.title,a.publishDate,a.editTime,a.pageView,a.htmlContent,a.summary,t.`tagName`,t.`id` AS tid,u.`nickname`,c.`cateName` FROM article a LEFT JOIN article_tags ats ON a.`id`=ats.`aid` LEFT JOIN tags t ON ats.`tid`=t.`id` LEFT JOIN user u ON a.`uid`=u.`id` LEFT JOIN category c ON a.`cid`=c.`id` WHERE a.id=#{aid};
+    </select>
+
+    <update id="pvIncrement" parameterType="Long">
+        UPDATE article set pageView=pageView+1 WHERE id=#{aid};
+    </update>
+
+    <select id="Categories" resultType="com.bro.blog.base.bean.Category">
+        SELECT id , cateName from Category;
+    </select>
+
+
+    <resultMap id="BaseResultMap" type="com.bro.blog.base.bean.Blog">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="publishDate" property="publishDate"/>
+        <result column="editTime" property="editTime"/>
+        <result column="pageView" property="pageView"/>
+        <result column="htmlContent" property="htmlContent"/>
+        <result column="summary" property="summary"/>
+        <result column="nickname" property="nickname"/>
+        <result column="cateName" property="cateName"/>
+        <collection property="tags" ofType="com.bro.blog.base.bean.Tags" column="tagName">
+            <id property="id" column="tid"/>
+            <result property="tagName" column="tagName"/>
+        </collection>
+    </resultMap>
+
+
+</mapper>
