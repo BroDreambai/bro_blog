@@ -5,17 +5,17 @@
  Source Server Type    : MySQL
  Source Server Version : 50715
  Source Host           : localhost:3306
- Source Schema         : vueblog2
+ Source Schema         : broblog
 
  Target Server Type    : MySQL
  Target Server Version : 50715
  File Encoding         : 65001
 
- Date: 08/11/2019 11:44:40
+ Date: 20/11/2019 11:24:47
 */
 CREATE DATABASE `broblog` DEFAULT CHARACTER SET utf8;
 
-USE `broblog`;
+USE `broblog2`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -248,17 +248,5 @@ INSERT INTO `user` VALUES (19, 'zuolengchan', '左冷禅', '202cb962ac59075b964b
 INSERT INTO `user` VALUES (20, 'fengqingyang', '风清扬', '202cb962ac59075b964b07152d234b70', 1, 'fengqingyang@qq.com', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514093920321&di=913e88c23f382933ef430024afd9128a&imgtype=0&src=http%3A%2F%2Fp.3761.com%2Fpic%2F9771429316733.jpg', 2, '2017-12-24 06:30:46', '2017-12-08 09:30:22');
 INSERT INTO `user` VALUES (21, 'linghucong', '', 'b08d1e6442a907e62fa7e46231b5334e', 1, '781438966@qq.com', '', 2, '2019-10-29 11:45:20', '2019-11-01 15:03:11');
 COMMIT;
-
--- ----------------------------
--- View structure for pvview
--- ----------------------------
-DROP VIEW IF EXISTS `pvview`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `pvview` AS select sum(`pv`.`pv`) AS `pv`,`pv`.`uid` AS `uid` from `pv` group by `pv`.`uid`;
-
--- ----------------------------
--- View structure for totalpvview
--- ----------------------------
-DROP VIEW IF EXISTS `totalpvview`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `totalpvview` AS select sum(`a`.`pageView`) AS `totalPv`,`a`.`uid` AS `uid` from `article` `a` group by `a`.`uid`;
 
 SET FOREIGN_KEY_CHECKS = 1;
