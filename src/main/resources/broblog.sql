@@ -15,7 +15,7 @@
 */
 CREATE DATABASE `broblog` DEFAULT CHARACTER SET utf8;
 
-USE `broblog2`;
+USE `broblog`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
