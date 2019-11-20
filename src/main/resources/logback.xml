@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_HOME" value="classpath:/logs"/>
+    <property name="LOG_HOME" value="${CATALINA_BASE}/logs"/>
 
     <appender name="requestAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/request.log</file>
