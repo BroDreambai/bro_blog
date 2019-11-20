@@ -18,10 +18,10 @@
         <appender-ref ref="requestAppender"/>
     </logger>
 
-    <appender name="dreambaiAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/dreambai.log</file>
+    <appender name="broAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/bro.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/dreambai.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/bro.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <maxHistory>15</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -30,8 +30,8 @@
         </encoder>
     </appender>
 
-    <logger name="com.dreambai.blog" level="INFO" additivity="false">
-        <appender-ref ref="dreambaiAppender"/>
+    <logger name="com.bro.blog" level="INFO" additivity="false">
+        <appender-ref ref="broAppender"/>
     </logger>
 
 

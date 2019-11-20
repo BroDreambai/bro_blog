@@ -48,7 +48,7 @@ public class Swagger2 {
 	 */
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Dreambai api文档")
+				.title("BroBlog api文档")
 				.description("更多请关注http://www.baidu.com")
 				.termsOfServiceUrl("http://www.baidu.com")
 				.contact("sunf")
