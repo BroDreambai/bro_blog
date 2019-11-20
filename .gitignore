@@ -2,6 +2,7 @@ target/
 .DS_Store
 */.DS_Store
 classpath:
+CATALINA_BASE_IS_UNDEFINED/*
 
 ### STS ###
 .apt_generated
