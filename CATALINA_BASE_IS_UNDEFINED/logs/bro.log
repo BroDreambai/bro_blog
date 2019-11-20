@@ -1,0 +1,7 @@
+[2019-11-20 11:46:08.272][[34m INFO[0;39m][main][BroblogApplication:50] Starting BroblogApplication on zhaohangdeMacBook-Pro-3.local with PID 3523 (/Users/zhaohang/gitee/BroDreambai/bro_blog/target/classes started by zhaohang in /Users/zhaohang/gitee/BroDreambai/bro_blog)
+[2019-11-20 11:46:08.306][[34m INFO[0;39m][main][BroblogApplication:679] The following profiles are active: dev
+[2019-11-20 11:46:12.366][[34m INFO[0;39m][main][AuthenticationFilter:82] AccesLogFilter destroy
+[2019-11-20 11:46:12.370][[34m INFO[0;39m][main][AuthenticationFilter:82] AccesLogFilter destroy
+[2019-11-20 11:48:52.717][[34m INFO[0;39m][main][BroblogApplication:50] Starting BroblogApplication on zhaohangdeMacBook-Pro-3.local with PID 3547 (/Users/zhaohang/gitee/BroDreambai/bro_blog/target/classes started by zhaohang in /Users/zhaohang/gitee/BroDreambai/bro_blog)
+[2019-11-20 11:48:52.721][[34m INFO[0;39m][main][BroblogApplication:679] The following profiles are active: dev
+[2019-11-20 11:48:59.602][[34m INFO[0;39m][main][BroblogApplication:59] Started BroblogApplication in 7.308 seconds (JVM running for 8.59)

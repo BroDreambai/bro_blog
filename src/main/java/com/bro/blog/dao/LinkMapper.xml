@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bro.blog.dao.LinkMapper">
-    <resultMap type="Link" id="LinkResult">
+    <resultMap type="com.bro.blog.base.bean.Link" id="LinkResult">
         <result property="linkName" column="linkName"/>
         <result property="linkUrl" column="linkUrl"/>
     </resultMap>
